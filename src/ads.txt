@@ -1,0 +1,477 @@
+<template>
+  <div
+    id="e3"
+    style="max-width: 400px; margin: auto;"
+    class="grey lighten-3"
+  >
+    <v-toolbar
+      color="pink"
+      dark
+    >
+      <v-toolbar-side-icon></v-toolbar-side-icon>
+      <v-toolbar-title>My Music</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>search</v-icon>
+      </v-btn>
+    </v-toolbar>
+
+    <v-card>
+      <v-container
+        fluid
+        grid-list-lg
+      >
+        <v-layout row wrap>
+          <v-flex xs12>
+            <v-card color="blue-grey darken-2" class="white--text">
+              <v-card-title primary-title>
+                <div>
+                  <div class="headline">Unlimited music now</div>
+                  <span>Listen to your favorite artists and albums whenever and wherever, online and offline.</span>
+                </div>
+              </v-card-title>
+              <v-card-actions>
+                <v-btn flat dark>Listen now</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+
+          <v-flex xs12>
+            <v-card color="cyan darken-2" class="white--text">
+              <v-layout>
+                <v-flex xs5>
+                  <v-img
+                    src="https://cdn.vuetifyjs.com/images/cards/foster.jpg"
+                    height="125px"
+                    contain
+                  ></v-img>
+                </v-flex>
+                <v-flex xs7>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="headline">Supermodel</div>
+                      <div>Foster the People</div>
+                      <div>(2014)</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+              </v-layout>
+              <v-divider light></v-divider>
+              <v-card-actions class="pa-3">
+                Rate this album
+                <v-spacer></v-spacer>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+
+          <v-flex xs12>
+            <v-card color="purple" class="white--text">
+              <v-layout row>
+                <v-flex xs7>
+                  <v-card-title primary-title>
+                    <div>
+                      <div class="headline">Halycon Days</div>
+                      <div>Ellie Goulding</div>
+                      <div>(2013)</div>
+                    </div>
+                  </v-card-title>
+                </v-flex>
+                <v-flex xs5>
+                  <v-img
+                    src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+                    height="125px"
+                    contain
+                  ></v-img>
+                </v-flex>
+              </v-layout>
+              <v-divider light></v-divider>
+              <v-card-actions class="pa-3">
+                Rate this album
+                <v-spacer></v-spacer>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+                <v-icon>star_border</v-icon>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card>
+  </div>
+</template>
+
+
+<template>
+  <v-card
+    class="mx-auto"
+    style="max-width: 500px;"
+  >
+    <v-system-bar
+      color="deep-purple darken-4"
+      dark
+    >
+      <v-spacer></v-spacer>
+      <v-icon small>mdi-square</v-icon>
+      <v-icon
+        class="ml-1"
+        small
+      >mdi-circle</v-icon>
+      <v-icon
+        class="ml-1"
+        small
+      >mdi-triangle</v-icon>
+    </v-system-bar>
+    <v-toolbar
+      color="deep-purple accent-4"
+      cards
+      dark
+      flat
+    >
+      <v-btn icon>
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+      <v-card-title class="title font-weight-regular">Sign up</v-card-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
+    </v-toolbar>
+    <v-form
+      ref="form"
+      v-model="form"
+      class="pa-3 pt-4"
+    >
+      <v-text-field
+        v-model="password"
+        :rules="[rules.password, rules.length(6)]"
+        box
+        color="deep-purple"
+        counter="6"
+        label="Password"
+        style="min-height: 96px"
+        type="password"
+      ></v-text-field>
+      <v-text-field
+        v-model="phone"
+        box
+        color="deep-purple"
+        label="Phone number"
+        mask="phone"
+      ></v-text-field>
+      <v-text-field
+        v-model="email"
+        :rules="[rules.email]"
+        box
+        color="deep-purple"
+        label="Email address"
+        type="email"
+      ></v-text-field>
+      <v-textarea
+        v-model="bio"
+        auto-grow
+        box
+        color="deep-purple"
+        label="Bio"
+        rows="1"
+      ></v-textarea>
+      <v-checkbox
+        v-model="agreement"
+        :rules="[rules.required]"
+        color="deep-purple"
+      >
+        <template v-slot:label>
+          I agree to the&nbsp;
+          <a href="#" @click.stop.prevent="dialog = true">Terms of Service</a>
+          &nbsp;and&nbsp;
+          <a href="#" @click.stop.prevent="dialog = true">Privacy Policy</a>*
+        </template>
+      </v-checkbox>
+    </v-form>
+    <v-divider></v-divider>
+    <v-card-actions>
+      <v-btn
+        flat
+        @click="$refs.form.reset()"
+      >
+        Clear
+      </v-btn>
+      <v-spacer></v-spacer>
+      <v-btn
+        :disabled="!form"
+        :loading="isLoading"
+        class="white--text"
+        color="deep-purple accent-4"
+        depressed
+      >Submit</v-btn>
+    </v-card-actions>
+    <v-dialog
+      v-model="dialog"
+      absolute
+      max-width="400"
+      persistent
+    >
+      <v-card>
+        <v-card-title class="headline grey lighten-3">Legal</v-card-title>
+        <v-card-text>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-card-actions>
+          <v-btn
+            flat
+            @click="agreement = false, dialog = false"
+          >
+            No
+          </v-btn>
+          <v-spacer></v-spacer>
+          <v-btn
+            class="white--text"
+            color="deep-purple accent-4"
+            @click="agreement = true, dialog = false"
+          >
+            Yes
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-card>
+</template>
+
+{
+  "hosting": {
+    "public": "./dist",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
+// ordering items
+citiesRef.orderBy("state").orderBy("population", "desc")
+
+// Search item
+var query = 'text'
+databaseReference.orderByChild('search_name')
+             .startAt(`%${query}%`)
+             .endAt(query+"\uf8ff")
+             .once("value")
+
+// Item pagination
+var first = db.collection("cities")
+        .orderBy("population")
+        .limit(25);
+
+return first.get().then(function (documentSnapshots) {
+  // Get the last visible document
+  var lastVisible = documentSnapshots.docs[documentSnapshots.docs.length-1];
+  console.log("last", lastVisible);
+
+  // Construct a new query starting at this document,
+  // get the next 25 cities.
+  var next = db.collection("cities")
+          .orderBy("population")
+          .startAfter(lastVisible)
+          .limit(25);
+});
+
+
+<script>
+  export default {
+    name: 'App',
+    metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'Default Title',
+      // all titles will be injected into this template
+      titleTemplate: '%s | My Awesome Webapp'
+    }
+  }
+</script>
+
+template>
+  <div id="page">
+    <h1>Home Page</h1>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'Home',
+    metaInfo: {
+      title: 'My Awesome Webapp',
+      // override the parent template and just use the above title only
+      titleTemplate: null
+    }
+  }
+</script>
+
+$ npm i vue-meta
+
+import Vue from 'vue'
+import VueMeta from 'vue-meta'
+
+Vue.use(VueMeta)
+
+
+
+<template>
+  <div id="app">
+    <router-view></router-view>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'App',
+    metaInfo: {
+      // if no subcomponents specify a metaInfo.title, this title will be used
+      title: 'Default Title',
+      // all titles will be injected into this template
+      titleTemplate: '%s | My Awesome Webapp'
+    }
+  }
+</script>
+
+Home.vue
+
+<template>
+  <div id="page">
+    <h1>Home Page</h1>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'Home',
+    metaInfo: {
+      title: 'My Awesome Webapp',
+      // override the parent template and just use the above title only
+      titleTemplate: null
+    }
+  }
+</script>
+About.vue
+
+<template>
+  <div id="page">
+    <h1>About Page</h1>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'About',
+    metaInfo: {
+      // title will be injected into parent titleTemplate
+      title: 'About Us'
+    }
+  }
+</script>
+
+
+// Onesignal JSON query
+var requestUrl = "https://onesignal.com/api/v1/notifications"
+
+// Sending to all subscribers
+{
+  "app_id": "5eb5a37e-b458-11e3-ac11-000c2940e62c",
+  "included_segments": ["All"],
+  "data": {"foo": "bar"},
+  "contents": {"en": "English Message"}
+}
+
+// Send to a specific segment
+{
+  "app_id": "5eb5a37e-b458-11e3-ac11-000c2940e62c",
+  "included_segments": ["Active Users"],
+  "data": {"foo": "bar"},
+  "contents": {"en": "English Message"}
+}
+
+// Send based on OneSignal PlayerIds
+{
+  "app_id": "",
+  "include_player_ids": [],
+  "headings": "Header",
+  "contents": "English Message",
+  "icon": "www.google.com/image.png"
+  "url": "www.google.com"
+  "chrome_web_icon": ""
+  "chrome_web_image": ""
+  "ttl": "2419200"
+}
+
+
+// Get PlayerIds
+OneSignal.push(function() {
+  /* These examples are all valid */
+  OneSignal.getUserId(function(userId) {
+    console.log("OneSignal User ID:", userId);
+    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+  });
+               
+  OneSignal.getUserId().then(function(userId) {
+    console.log("OneSignal User ID:", userId);
+    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
+  });
+});
+
+// Removing a particular element from an array
+var array = [2, 5, 9];
+console.log(array)
+var index = array.indexOf(5);
+if (index > -1) {
+  array.splice(index, 1);
+}
+// array = [2, 9]
+console.log(array);
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+
+// Sendgrid key
+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
+
+// localhost smtp token
+3359a739-e001-4ab1-a4ae-37eb3d4d553f
+
+// zuana smtp token
+5518ed98-8b6f-4dba-80f1-c8d56b8764d5
+
+//encryt token smtp
+Email.send({
+    SecureToken : "5a7d233b-3b93-42a2-a139-f368fb067f9e",
+    To : 'them@website.com',
+    From : "you@isp.com",
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
+
+
+https://www.smtpjs.com/
+
+NODE_ENV=production npm run build
+
+#RewriteEngine On 
+#RewriteCond %{SERVER_PORT} 80 
+#RewriteRule ^(.*)$ https://zuana.com.ng/$1 [R,L]
+
+#Redirection code Ends
+
+window.addEventListener("resize", myFunction);
+
+this.$nextTick(() => {
+      console.log(
+        'inside nextTick callback:', this.$el.textContent) }

@@ -1,0 +1,33 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "property",
+      "queryScope": "COLLECTION_GROUP",
+      "fields": [
+        {
+          "fieldPath": "createdOn",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "catergory",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "property",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "active",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "title",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
